@@ -44,17 +44,7 @@ public class PumpEvaluationFragment extends Fragment {
                 RadioButton radioButton2 = root.findViewById(selectedId2);
                 RadioButton radioButton3 = root.findViewById(selectedId3);
 
-                if (radioButton1 != null) {
-                    quizViewModel.setAnswer1(radioButton1.getText().toString());
-                }
 
-                if (radioButton2 != null) {
-                    quizViewModel.setAnswer2(radioButton2.getText().toString());
-                }
-
-                if (radioButton3 != null) {
-                    quizViewModel.setAnswer3(radioButton3.getText().toString());
-                }
             }
         });
 

@@ -18,6 +18,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.rsq.QuizViewModel;
 import com.example.rsq.R;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DefibrillatorEvaluationFragment extends Fragment {
@@ -49,7 +51,8 @@ public class DefibrillatorEvaluationFragment extends Fragment {
         validateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // This part collects the answers from each participant's questionnaire.
+                // This part collects the answers from each participant's questionnaire and stores them in the ViewModel.
+                HashMap<String, List<String>> participantAnswers = new HashMap<>();
                 for (int i = 0; i < questionnaireLayout.getChildCount() - 1; i++) { // Modified condition to "- 1" to ignore the button
                     View participantQuestionnaire = questionnaireLayout.getChildAt(i);
 
@@ -71,8 +74,27 @@ public class DefibrillatorEvaluationFragment extends Fragment {
                     RadioButton radioButton4 = radioGroup4.findViewById(selectedId4);
                     RadioButton radioButton5 = radioGroup5.findViewById(selectedId5);
 
-                    // At this point, you can store the responses from each participant separately.
+                    // Collect the responses
+                    String participantName = participantNames.get(i);  // You should make sure this matches the participant for the current questionnaire
+                    List<String> answers = new ArrayList<>();
+                    if (radioButton1 != null) {
+                        answers.add(radioButton1.getText().toString());
+                    }
+                    if (radioButton2 != null) {
+                        answers.add(radioButton2.getText().toString());
+                    }
+                    if (radioButton3 != null) {
+                        answers.add(radioButton3.getText().toString());
+                    }
+                    if (radioButton4 != null) {
+                        answers.add(radioButton4.getText().toString());
+                    }
+                    if (radioButton5 != null) {
+                        answers.add(radioButton5.getText().toString());
+                    }
+                    participantAnswers.put(participantName, answers);
                 }
+                quizViewModel.setParticipantAnswers(participantAnswers);
             }
         });
 

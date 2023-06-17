@@ -34,29 +34,7 @@ public class PumpResultsFragment extends Fragment {
         TextView answer2TextView = root.findViewById(R.id.answer2);
         TextView answer3TextView = root.findViewById(R.id.answer3);
 
-        quizViewModel.getAnswer1().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String answer) {
-                // Mettez à jour votre interface utilisateur avec la réponse
-                answer1TextView.setText("Gestes de premier secours immédiats et efficaces : " + answer);
-            }
-        });
 
-        quizViewModel.getAnswer2().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String answer) {
-                // Mettez à jour votre interface utilisateur avec la réponse
-                answer2TextView.setText("Pose d'un garrot efficace :" + answer);
-            }
-        });
-
-        quizViewModel.getAnswer3().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String answer) {
-                // Mettez à jour votre interface utilisateur avec la réponse
-                answer3TextView.setText("Bilan effectué en conformité :" + answer);
-            }
-        });
 
         return root;
     }

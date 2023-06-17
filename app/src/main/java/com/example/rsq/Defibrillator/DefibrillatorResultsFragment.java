@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.example.rsq.QuizViewModel;
 import com.example.rsq.R;
 
+import java.util.List;
+import java.util.Map;
+
 public class DefibrillatorResultsFragment extends Fragment {
     private QuizViewModel quizViewModel;
 
@@ -29,50 +32,30 @@ public class DefibrillatorResultsFragment extends Fragment {
 
         quizViewModel = new ViewModelProvider(requireActivity()).get(QuizViewModel.class);
 
-        // Supposez que vous avez un TextView pour chaque réponse
-        TextView answer1TextView = root.findViewById(R.id.answer1);
-        TextView answer2TextView = root.findViewById(R.id.answer2);
-        TextView answer3TextView = root.findViewById(R.id.answer3);
-        TextView answer4TextView = root.findViewById(R.id.answer4);
-        TextView answer5TextView = root.findViewById(R.id.answer5);
+        TextView resultsTextView = root.findViewById(R.id.resultsTextView);
 
-        quizViewModel.getAnswer1().observe(getViewLifecycleOwner(), new Observer<String>() {
+        // Observe the participant answers in the ViewModel
+        quizViewModel.getParticipantAnswers().observe(getViewLifecycleOwner(), new Observer<Map<String, List<String>>>() {
             @Override
-            public void onChanged(String answer) {
-                // Mettez à jour votre interface utilisateur avec la réponse
-                answer1TextView.setText("Mise en place rapide du défibrillateur : " + answer);
-            }
-        });
+            public void onChanged(Map<String, List<String>> participantAnswers) {
+                StringBuilder resultsStringBuilder = new StringBuilder();
 
-        quizViewModel.getAnswer2().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String answer) {
-                // Mettez à jour votre interface utilisateur avec la réponse
-                answer2TextView.setText("Insufflation efficace : " + answer);
-            }
-        });
+                for (String participantName : participantAnswers.keySet()) {
+                    resultsStringBuilder.append(participantName);
+                    resultsStringBuilder.append("\n");
 
-        quizViewModel.getAnswer3().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String answer) {
-                // Mettez à jour votre interface utilisateur avec la réponse
-                answer3TextView.setText("Sécurité : " + answer);
-            }
-        });
+                    List<String> answers = participantAnswers.get(participantName);
+                    for (int i = 0; i < answers.size(); i++) {
+                        resultsStringBuilder.append("Question ");
+                        resultsStringBuilder.append(i + 1);
+                        resultsStringBuilder.append("\n- ");
+                        resultsStringBuilder.append(answers.get(i));
+                        resultsStringBuilder.append("\n");
+                    }
+                    resultsStringBuilder.append("\n");
+                }
 
-        quizViewModel.getAnswer4().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String answer) {
-                // Mettez à jour votre interface utilisateur avec la réponse
-                answer4TextView.setText("Bilan en cours de RCP : " + answer);
-            }
-        });
-
-        quizViewModel.getAnswer5().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String answer) {
-                // Mettez à jour votre interface utilisateur avec la réponse
-                answer5TextView.setText("Bilan effectué en conformité : " + answer);
+                resultsTextView.setText(resultsStringBuilder.toString());
             }
         });
 
