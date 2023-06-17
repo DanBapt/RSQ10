@@ -62,36 +62,15 @@ public class DefibrillatorEvaluationFragment extends Fragment {
                     RadioGroup radioGroup4 = participantQuestionnaire.findViewById(R.id.radioGroup4);
                     RadioGroup radioGroup5 = participantQuestionnaire.findViewById(R.id.radioGroup5);
 
-                    int selectedId1 = radioGroup1.getCheckedRadioButtonId();
-                    int selectedId2 = radioGroup2.getCheckedRadioButtonId();
-                    int selectedId3 = radioGroup3.getCheckedRadioButtonId();
-                    int selectedId4 = radioGroup4.getCheckedRadioButtonId();
-                    int selectedId5 = radioGroup5.getCheckedRadioButtonId();
-
-                    RadioButton radioButton1 = radioGroup1.findViewById(selectedId1);
-                    RadioButton radioButton2 = radioGroup2.findViewById(selectedId2);
-                    RadioButton radioButton3 = radioGroup3.findViewById(selectedId3);
-                    RadioButton radioButton4 = radioGroup4.findViewById(selectedId4);
-                    RadioButton radioButton5 = radioGroup5.findViewById(selectedId5);
-
                     // Collect the responses
                     String participantName = participantNames.get(i);  // You should make sure this matches the participant for the current questionnaire
                     List<String> answers = new ArrayList<>();
-                    if (radioButton1 != null) {
-                        answers.add(radioButton1.getText().toString());
-                    }
-                    if (radioButton2 != null) {
-                        answers.add(radioButton2.getText().toString());
-                    }
-                    if (radioButton3 != null) {
-                        answers.add(radioButton3.getText().toString());
-                    }
-                    if (radioButton4 != null) {
-                        answers.add(radioButton4.getText().toString());
-                    }
-                    if (radioButton5 != null) {
-                        answers.add(radioButton5.getText().toString());
-                    }
+                    answers.add(getAnswerFromRadioGroup(radioGroup1));
+                    answers.add(getAnswerFromRadioGroup(radioGroup2));
+                    answers.add(getAnswerFromRadioGroup(radioGroup3));
+                    answers.add(getAnswerFromRadioGroup(radioGroup4));
+                    answers.add(getAnswerFromRadioGroup(radioGroup5));
+
                     participantAnswers.put(participantName, answers);
                 }
                 quizViewModel.setParticipantAnswers(participantAnswers);
@@ -99,5 +78,16 @@ public class DefibrillatorEvaluationFragment extends Fragment {
         });
 
         return root;
+    }
+
+    private String getAnswerFromRadioGroup(RadioGroup radioGroup) {
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+
+        if (selectedId != -1) {
+            RadioButton radioButton = radioGroup.findViewById(selectedId);
+            return radioButton.getText().toString();
+        } else {
+            return "Non évalué";
+        }
     }
 }
