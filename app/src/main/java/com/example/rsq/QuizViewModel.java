@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,6 +21,13 @@ public class QuizViewModel extends ViewModel {
         return this.participantNames;
     }
 
+    public List<String> questions = Arrays.asList(
+            "Mise en place rapide du défibrillateur :",
+            "Insufflation efficace :",
+            "Sécurité :",
+            "Bilan en cours de RCP :",
+            "Bilan effectué en conformité :"
+    );
     public void setParticipantAnswers(HashMap<String, List<String>> answers) {
         this.participantAnswers.setValue(answers);
     }

@@ -46,8 +46,9 @@ public class DefibrillatorResultsFragment extends Fragment {
 
                     List<String> answers = participantAnswers.get(participantName);
                     for (int i = 0; i < answers.size(); i++) {
-                        resultsStringBuilder.append("Question ");
-                        resultsStringBuilder.append(i + 1);
+                        // Fetch the question from the list of questions stored in QuizViewModel.
+                        String question = quizViewModel.questions.get(i);
+                        resultsStringBuilder.append(question);
                         resultsStringBuilder.append("\n- ");
                         resultsStringBuilder.append(answers.get(i));
                         resultsStringBuilder.append("\n");
