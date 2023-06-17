@@ -28,6 +28,12 @@ public class QuizViewModel extends ViewModel {
             "Bilan en cours de RCP :",
             "Bilan effectué en conformité :"
     );
+    public List<String> questions_pump = Arrays.asList(
+            "Gestes de premier secours immédiats et efficaces :",
+            "Pose d'un garrot efficace :",
+            "Bilan effectué en conformité :"
+    );
+
     public void setParticipantAnswers(HashMap<String, List<String>> answers) {
         this.participantAnswers.setValue(answers);
     }

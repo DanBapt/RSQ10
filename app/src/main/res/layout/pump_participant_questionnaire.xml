@@ -1,0 +1,131 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/participant_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/question_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gestes de premier secours immédiats et efficaces : "
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acquis"/>
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="En cours d'acquisition"/>
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Non acquis"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/question_text_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pose d'un garrot efficace :"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/radioButton1_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acquis"/>
+
+        <RadioButton
+            android:id="@+id/radioButton2_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="En cours d'acquisition"/>
+
+        <RadioButton
+            android:id="@+id/radioButton3_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Non acquis"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/question_text_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bilan effectué en conformité :"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/radioButton1_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acquis"/>
+
+        <RadioButton
+            android:id="@+id/radioButton2_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="En cours d'acquisition"/>
+
+        <RadioButton
+            android:id="@+id/radioButton3_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Non acquis"/>
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:layout_marginTop="70dp">
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
