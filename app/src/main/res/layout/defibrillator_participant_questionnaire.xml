@@ -15,7 +15,7 @@
         android:id="@+id/question_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mise en place rapide du défibrillateur :"
+        android:text="Sécurtité :"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"/>
 
@@ -29,23 +29,31 @@
 
         <RadioButton
             android:id="@+id/radioButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Acquis"/>
+            android:layout_width="76dp"
+            android:layout_height="match_parent"
+            android:text="Acquis" />
 
         <RadioButton
             android:id="@+id/radioButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="En cours d'acquisition"/>
+            android:layout_width="113dp"
+            android:layout_height="match_parent"
+            android:text="En cours d'acquisition" />
 
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Non acquis"/>
+            android:layout_height="match_parent"
+            android:text="Non acquis" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Non effectué" />
 
     </RadioGroup>
+
+
 
     <TextView
         android:id="@+id/question_text_2"
@@ -53,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Insufflation efficace :" />
+        android:text="Bilan effectué en conformité :" />
 
     <RadioGroup
         android:id="@+id/radioGroup2"
@@ -67,29 +75,34 @@
             android:id="@+id/radioButton1_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Acquis"/>
+            android:text="Acquis" />
 
         <RadioButton
             android:id="@+id/radioButton2_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="En cours d'acquisition"/>
+            android:layout_width="113dp"
+            android:layout_height="match_parent"
+            android:text="En cours d'acquisition" />
 
         <RadioButton
             android:id="@+id/radioButton3_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Non acquis"/>
+            android:text="Non acquis" />
 
+        <RadioButton
+            android:id="@+id/radioButton4_2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Non effectué" />
     </RadioGroup>
 
     <TextView
         android:id="@+id/question_text_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sécurité :"
+        android:text="Insufflations efficaces :"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"/>
+        android:layout_marginStart="16dp" />
 
     <RadioGroup
         android:id="@+id/radioGroup3"
@@ -103,20 +116,25 @@
             android:id="@+id/radioButton1_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Acquis"/>
+            android:text="Acquis" />
 
         <RadioButton
             android:id="@+id/radioButton2_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="En cours d'acquisition"/>
+            android:layout_width="113dp"
+            android:layout_height="match_parent"
+            android:text="En cours d'acquisition" />
 
         <RadioButton
             android:id="@+id/radioButton3_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Non acquis"/>
+            android:text="Non acquis" />
 
+        <RadioButton
+            android:id="@+id/radioButton4_3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Non effectué" />
     </RadioGroup>
 
     <TextView
@@ -125,7 +143,7 @@
         android:layout_height="wrap_content"
         android:text="Bilan en cours de RCP :"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"/>
+        android:layout_marginStart="16dp" />
 
     <RadioGroup
         android:id="@+id/radioGroup4"
@@ -134,33 +152,39 @@
         android:orientation="horizontal"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp">
+
         <RadioButton
             android:id="@+id/radioButton1_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Acquis"/>
+            android:text="Acquis" />
 
         <RadioButton
             android:id="@+id/radioButton2_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="En cours d'acquisition"/>
+            android:layout_width="113dp"
+            android:layout_height="match_parent"
+            android:text="En cours d'acquisition" />
 
         <RadioButton
             android:id="@+id/radioButton3_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Non acquis"/>
+            android:text="Non acquis" />
 
+        <RadioButton
+            android:id="@+id/radioButton4_4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Non effectué" />
     </RadioGroup>
 
     <TextView
         android:id="@+id/question_text_5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bilan effectué en conformité :"
+        android:text="Compression efficaces :"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"/>
+        android:layout_marginStart="16dp" />
 
     <RadioGroup
         android:id="@+id/radioGroup5"
@@ -174,21 +198,35 @@
             android:id="@+id/radioButton1_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Acquis"/>
+            android:text="Acquis" />
 
         <RadioButton
             android:id="@+id/radioButton2_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="En cours d'acquisition"/>
+            android:layout_width="113dp"
+            android:layout_height="match_parent"
+            android:text="En cours d'acquisition" />
 
         <RadioButton
             android:id="@+id/radioButton3_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Non acquis"/>
+            android:text="Non acquis" />
 
+        <RadioButton
+            android:id="@+id/radioButton4_5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Non effectué" />
     </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:layout_marginTop="70dp">
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -201,5 +239,3 @@
     </LinearLayout>
 
 </LinearLayout>
-
-

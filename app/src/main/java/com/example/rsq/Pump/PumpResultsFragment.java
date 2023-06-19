@@ -28,7 +28,7 @@ public class PumpResultsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_defibrillator_results, container, false);
+        View root = inflater.inflate(R.layout.fragment_pump_results, container, false);
 
         quizViewModel = new ViewModelProvider(requireActivity()).get(QuizViewModel.class);
 

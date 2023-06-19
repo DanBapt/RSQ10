@@ -22,15 +22,16 @@ public class QuizViewModel extends ViewModel {
     }
 
     public List<String> questions = Arrays.asList(
-            "Mise en place rapide du défibrillateur :",
-            "Insufflation efficace :",
-            "Sécurité :",
+            "Sécurtité :",
+            "Bilan effectué en conformité :",
+            "Insufflations efficaces :",
             "Bilan en cours de RCP :",
-            "Bilan effectué en conformité :"
+            "Compression efficaces :"
     );
     public List<String> questions_pump = Arrays.asList(
-            "Gestes de premier secours immédiats et efficaces :",
-            "Pose d'un garrot efficace :",
+            "Sécurité :",
+            "Pose d'un matériel adapté pour stopper le saignement :",
+            "Conduite à tenir adaptée :",
             "Bilan effectué en conformité :"
     );
 

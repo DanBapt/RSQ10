@@ -59,6 +59,7 @@ public class PumpEvaluationFragment extends Fragment {
                     RadioGroup radioGroup1 = participantQuestionnaire.findViewById(R.id.radioGroup1);
                     RadioGroup radioGroup2 = participantQuestionnaire.findViewById(R.id.radioGroup2);
                     RadioGroup radioGroup3 = participantQuestionnaire.findViewById(R.id.radioGroup3);
+                    RadioGroup radioGroup4 = participantQuestionnaire.findViewById(R.id.radioGroup4);
 
 
                     // Collect the responses
@@ -67,6 +68,8 @@ public class PumpEvaluationFragment extends Fragment {
                     answers.add(getAnswerFromRadioGroup(radioGroup1));
                     answers.add(getAnswerFromRadioGroup(radioGroup2));
                     answers.add(getAnswerFromRadioGroup(radioGroup3));
+                    answers.add(getAnswerFromRadioGroup(radioGroup4));
+
 
 
                     participantAnswers.put(participantName, answers);
