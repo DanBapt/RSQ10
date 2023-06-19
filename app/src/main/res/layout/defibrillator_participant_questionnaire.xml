@@ -9,7 +9,7 @@
         android:id="@+id/participant_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="22sp"
         android:textColor="#FF0000" />
 
     <TextView
@@ -17,7 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sécurtité :"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#0000FF"
+        android:textSize="20sp"
         android:layout_marginStart="16dp"/>
 
     <RadioGroup
@@ -62,6 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:textSize="20sp"
+        android:textColor="#0000FF"
         android:text="Bilan effectué en conformité :" />
 
     <RadioGroup
@@ -103,6 +107,8 @@
         android:layout_height="wrap_content"
         android:text="Insufflations efficaces :"
         android:layout_marginTop="16dp"
+        android:textColor="#0000FF"
+        android:textSize="20sp"
         android:layout_marginStart="16dp" />
 
     <RadioGroup
@@ -144,6 +150,8 @@
         android:layout_height="wrap_content"
         android:text="Bilan en cours de RCP :"
         android:layout_marginTop="16dp"
+        android:textColor="#0000FF"
+        android:textSize="20sp"
         android:layout_marginStart="16dp" />
 
     <RadioGroup
@@ -185,6 +193,8 @@
         android:layout_height="wrap_content"
         android:text="Compression efficaces :"
         android:layout_marginTop="16dp"
+        android:textColor="#0000FF"
+        android:textSize="20sp"
         android:layout_marginStart="16dp" />
 
     <RadioGroup
