@@ -20,7 +20,6 @@
         android:id="@+id/participant_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#FFFF00"/>
+        android:orientation="vertical" />
 
 </LinearLayout>

@@ -1,9 +1,16 @@
 package com.example.rsq.Defibrillator;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+
+import android.text.style.ForegroundColorSpan;
+import android.text.style.TypefaceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +40,12 @@ public class DefibrillatorResultsFragment extends Fragment {
         quizViewModel = new ViewModelProvider(requireActivity()).get(QuizViewModel.class);
 
         TextView resultsTextView = root.findViewById(R.id.resultsTextView);
+        ForegroundColorSpan colorSpanParticipant = new ForegroundColorSpan(Color.RED);  // Couleur bleue pour le nom du participant.
+        ForegroundColorSpan colorSpanQuestion = new ForegroundColorSpan(Color.BLUE);  // Couleur rouge pour la question.
+        ForegroundColorSpan colorSpanAnswer = new ForegroundColorSpan(Color.BLACK);  // Couleur verte pour la réponse.
 
+    //    Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.your_font);  // Remplacez "your_font" par le nom de votre police.
+     //   TypefaceSpan typefaceSpan = new TypefaceSpan(typeface);
         // Observe the participant answers in the ViewModel
         quizViewModel.getParticipantAnswers().observe(getViewLifecycleOwner(), new Observer<Map<String, List<String>>>() {
             @Override
