@@ -32,6 +32,11 @@ import android.widget.Toast;
 // import com.example.rsq.AndroidManifest;
 import com.example.rsq.QuizViewModel;
 import com.example.rsq.R;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -102,47 +107,63 @@ public class DefibrillatorResultsFragment extends Fragment {
 
         Button downloadPdfButton = root.findViewById(R.id.downloadPdfButton);
         downloadPdfButton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-                generateAndDownloadPdf(resultsTextView.getText().toString());
+            @Override
+            public void onClick(View v) {
+                generateAndDownloadPdf(quizViewModel.getParticipantAnswers().getValue());
             }
         });
+
 
 
 
         return root;
     }
 
-    private void generateAndDownloadPdf(String content) {
-        PdfDocument pdfDocument = new PdfDocument();
-
-        // Create a new page description
-        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 1).create();
-
-        // Start a page
-        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
-
-        // Draw content on the page
-        Canvas canvas = page.getCanvas();
-        Paint paint = new Paint();
-        canvas.drawText(content, 10, 50, paint);
-
-        // Finish the page
-        pdfDocument.finishPage(page);
-
-        // Write the document contents to a file
-        String fileName = "results.pdf";
-        File outputFile = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DOWNLOADS), fileName);
+    private void generateAndDownloadPdf(Map<String, List<String>> participantAnswers) {
         try {
-            pdfDocument.writeTo(new FileOutputStream(outputFile));
-            Toast.makeText(getContext(), "PDF téléchargé dans les téléchargements", Toast.LENGTH_LONG).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(getContext(), "Erreur lors de la création du PDF", Toast.LENGTH_LONG).show();
-        }
+            // Create a new PDF document
+            StringBuilder filename = new StringBuilder("Defibrillator_Evaluation_");
+            for (String participantName : participantAnswers.keySet()) {
+                filename.append(participantName).append("_");
+            }
+            filename.append(".pdf");  // Append the file extension
+            Document document = new Document();
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename.toString())));
+            document.open();
 
-        // Close the document
-        pdfDocument.close();
+            // Set fonts and colors for the document
+            Font fontParticipant = new Font(Font.FontFamily.HELVETICA, 20, Font.NORMAL, new BaseColor(255, 0, 0)); // Red for participant name
+            Font fontQuestion = new Font(Font.FontFamily.HELVETICA, 16, Font.NORMAL, new BaseColor(0, 0, 255)); // Blue for question
+            Font fontAnswer = new Font(Font.FontFamily.HELVETICA, 16, Font.NORMAL, new BaseColor(0, 0, 0)); // Black for answer
+
+            // Loop over the participant answers
+            for (String participantName : participantAnswers.keySet()) {
+                // Create a new Paragraph for each participant, question and answer
+                Paragraph participantParagraph = new Paragraph(participantName + "\n", fontParticipant);
+                document.add(participantParagraph);
+
+                List<String> answers = participantAnswers.get(participantName);
+                for (int i = 0; i < answers.size(); i++) {
+                    String question = quizViewModel.questions.get(i);
+                    Paragraph questionParagraph = new Paragraph(question + "\n- ", fontQuestion);
+                    document.add(questionParagraph);
+
+                    String answer = answers.get(i);
+                    Paragraph answerParagraph = new Paragraph(answer + "\n", fontAnswer);
+                    document.add(answerParagraph);
+                }
+
+                // Add a line break after each participant's answers
+                document.add(new Paragraph("\n"));
+            }
+
+            // Close the document
+            document.close();
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+
 }
