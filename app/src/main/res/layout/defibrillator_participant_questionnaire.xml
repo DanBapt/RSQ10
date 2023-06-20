@@ -14,13 +14,13 @@
 
     <TextView
         android:id="@+id/question_text"
+        android:text="Sécurtité :"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sécurtité :"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:textColor="#0000FF"
         android:textSize="20sp"
-        android:layout_marginStart="16dp"/>
+        android:layout_marginStart="16dp" />
 
     <RadioGroup
         android:id="@+id/radioGroup1"
@@ -32,8 +32,8 @@
 
         <RadioButton
             android:id="@+id/radioButton1"
-            android:layout_width="76dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Acquis" />
 
         <RadioButton
@@ -45,7 +45,7 @@
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="Non acquis" />
 
         <RadioButton

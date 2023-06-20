@@ -1,14 +1,21 @@
 package com.example.rsq.Defibrillator;
 
+import android.content.pm.PackageManager;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.os.Environment;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -18,10 +25,17 @@ import android.text.style.TypefaceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+// import com.example.rsq.AndroidManifest;
 import com.example.rsq.QuizViewModel;
 import com.example.rsq.R;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -48,8 +62,8 @@ public class DefibrillatorResultsFragment extends Fragment {
         ForegroundColorSpan colorSpanQuestion = new ForegroundColorSpan(Color.BLUE);  // Couleur rouge pour la question.
         ForegroundColorSpan colorSpanAnswer = new ForegroundColorSpan(Color.BLACK);  // Couleur verte pour la réponse.
 
-    //    Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.your_font);  // Remplacez "your_font" par le nom de votre police.
-     //   TypefaceSpan typefaceSpan = new TypefaceSpan(typeface);
+        //    Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.your_font);  // Remplacez "your_font" par le nom de votre police.
+        //   TypefaceSpan typefaceSpan = new TypefaceSpan(typeface);
         // Observe the participant answers in the ViewModel
         quizViewModel.getParticipantAnswers().observe(getViewLifecycleOwner(), new Observer<Map<String, List<String>>>() {
             @Override
@@ -86,7 +100,49 @@ public class DefibrillatorResultsFragment extends Fragment {
 
 
 
+        Button downloadPdfButton = root.findViewById(R.id.downloadPdfButton);
+        downloadPdfButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+                generateAndDownloadPdf(resultsTextView.getText().toString());
+            }
+        });
+
+
 
         return root;
+    }
+
+    private void generateAndDownloadPdf(String content) {
+        PdfDocument pdfDocument = new PdfDocument();
+
+        // Create a new page description
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 1).create();
+
+        // Start a page
+        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
+
+        // Draw content on the page
+        Canvas canvas = page.getCanvas();
+        Paint paint = new Paint();
+        canvas.drawText(content, 10, 50, paint);
+
+        // Finish the page
+        pdfDocument.finishPage(page);
+
+        // Write the document contents to a file
+        String fileName = "results.pdf";
+        File outputFile = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOWNLOADS), fileName);
+        try {
+            pdfDocument.writeTo(new FileOutputStream(outputFile));
+            Toast.makeText(getContext(), "PDF téléchargé dans les téléchargements", Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "Erreur lors de la création du PDF", Toast.LENGTH_LONG).show();
+        }
+
+        // Close the document
+        pdfDocument.close();
     }
 }
